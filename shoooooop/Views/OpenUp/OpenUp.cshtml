@@ -1,0 +1,12 @@
+﻿@model shoooooop.ViewModels.CarsListViewModel
+
+
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Car car in Model.allCars)
+        {
+            @Html.Partial("OpenUpCars", car)
+
+        }
+    }
+</div>

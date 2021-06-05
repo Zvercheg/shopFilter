@@ -1,0 +1,38 @@
+﻿@model Car
+
+<div class="col-lg-4">
+    <img class="img-thumbnail" src="@Model.img" alt="@Model.name" />
+    <h2>@Model.year @Model.name </h2>
+    <p>Пробег: @Model.mileage ml</p>
+    <p>Тип кузова: @Model.bodyType</p>
+    <p>КПП: @Model.Transmission</p>
+    <p>Тип привода: @Model.driveUnit</p>
+
+    @{
+        if (@Model.categoryID == 1)
+        {
+            <p>Тип топлива: Электро</p>
+            <p>Объем двигателя: @Model.engineVolume кВт.</p>
+        }
+        else if (@Model.categoryID == 2)
+        {
+            <p>Тип топлива: Бензин</p>
+            <p>Объем двигателя: @Model.engineVolume л.</p>
+        }
+        else if (@Model.categoryID == 1002)
+        {
+            <p>Тип топлива: Гибрид</p>
+            <p>Объем двигателя: @Model.engineVolume л.</p>
+        }
+        else if (@Model.categoryID == 1003)
+        {
+            <p>Тип топлива: Дизель</p>
+            <p>Объем двигателя: @Model.engineVolume л.</p>
+        }
+    }
+
+
+    <p>Цена в США: @Model.price $</p>
+
+
+</div>

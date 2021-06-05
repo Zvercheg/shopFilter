@@ -1,0 +1,155 @@
+﻿
+@model shoooooop.ViewModels.CarsListViewModel
+@using shoooooop.HtmlHelpers
+@using PagedList.Mvc;
+@using PagedList;
+
+<style>
+    #pagingDiv a, #pagingDiv span {
+        display: inline-block;
+        padding: 0px 9px;
+        margin-right: 4px;
+        border-radius: 3px;
+        border: solid 1px #c0c0c0;
+        background: #e9e9e9;
+        box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+        font-size: .875em;
+        font-weight: bold;
+        text-decoration: none;
+        color: #717171;
+        text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+    }
+
+        #pagingDiv a:hover {
+            background: #fefefe;
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+            background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+        }
+
+        #pagingDiv a.active {
+            border: none;
+            background: #616161;
+            box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+            color: #f0f0f0;
+            text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+        }
+
+    #pagingDiv span {
+        color: #f0f0f0;
+        background: #616161;
+    }
+</style>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Поиск: </label>
+
+        @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+
+
+        <input type="submit" value="Поиск" class="btn btn-default" />
+    </div>
+</form>
+
+
+<form method="get">
+    <div class=" form-group">
+
+        <p>Тип двигателя</p>
+
+        @Html.CheckBox("categoryElectro") - Электро
+        <br />
+        @Html.CheckBox("categoryFuel") - Бензин
+        <br />
+
+        @Html.CheckBox("categoryHybro") - Гибрид
+        <br />
+
+        @Html.CheckBox("categoryDiez") - Дизель
+        <br />
+
+        <p>Года</p>
+        @Html.CheckBox("carsyear2019") - 2019
+
+        <br />
+        @Html.CheckBox("carsyear2018") - 2018
+
+        <br />
+        @Html.CheckBox("carsyear2017") - 2017
+
+        <br />
+        @Html.CheckBox("carsyear2016") - 2016
+
+        <br />
+        @Html.CheckBox("carsyear2015") - 2015
+
+        <br />
+        @Html.CheckBox("carsyear2014") - 2014
+
+        <br />
+        @Html.CheckBox("carsyear2013") - 2013
+
+        <br />
+        @Html.CheckBox("carsyear2012") - 2012
+
+        <br />
+        @Html.CheckBox("carsyear2011") - 2011
+
+        <br />
+        @Html.CheckBox("carsyear2010") - 2010
+
+        <br />
+
+        <p>Тип привода</p>
+
+        @Html.CheckBox("rearDrive") - Задний
+        <br />
+        @Html.CheckBox("frontDrive") - Передний
+        <br />
+
+        @Html.CheckBox("fullDrive") - Полный
+        <br />
+
+        <p>Тип кузова</p>
+
+        @Html.CheckBox("sedan") - Седан
+        <br />
+        @Html.CheckBox("coupe") - Купе
+        <br />
+        @Html.CheckBox("heatchback") - Хетчбек
+        <br />
+        @Html.CheckBox("universal") - Универсал
+        <br />
+        @Html.CheckBox("outroad") - Внедорожник
+        <br />
+        @Html.CheckBox("pickup") - Пикап
+        <br />
+
+        <p>КПП</p>
+
+        @Html.CheckBox("mehan") - Механика
+        <br />
+        @Html.CheckBox("auto") - Автомат
+        <br />
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+
+
+@Context.Request.Host@Context.Request.Path@Context.Request.QueryString
+
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Car car in Model.allCars)
+        {
+            @Html.Partial("AllCars", car)
+
+        }
+    }
+</div>
+
+<div id="pagingDiv">@Html.Raw(ViewBag.Paging)</div>
+
+
+

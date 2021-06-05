@@ -1,0 +1,374 @@
+﻿@model Car
+
+
+    <div class="col-lg-4">
+        <img class="img-thumbnail" src="@Model.img" alt="@Model.name" />
+        <h2>@Model.year @Model.name </h2>
+        <p>Пробег: @Model.mileage ml</p>
+        <p>Тип кузова: @Model.bodyType</p>
+        <p>КПП: @Model.Transmission</p>
+        <p>Тип привода: @Model.driveUnit</p>
+
+        @{
+            if (@Model.categoryID == 1)
+            {
+                <p>Тип топлива: Электро</p>
+                <p>Объем двигателя: @Model.engineVolume кВт.</p>
+            }
+            else if (@Model.categoryID == 2)
+            {
+                <p>Тип топлива: Бензин</p>
+                <p>Объем двигателя: @Model.engineVolume л.</p>
+            }
+            else if (@Model.categoryID == 1002)
+            {
+                <p>Тип топлива: Гибрид</p>
+                <p>Объем двигателя: @Model.engineVolume л.</p>
+            }
+            else if (@Model.categoryID == 1003)
+            {
+                <p>Тип топлива: Дизель</p>
+                <p>Объем двигателя: @Model.engineVolume л.</p>
+            }
+        }
+
+
+        <p>Цена в США: @Model.price $</p>
+        <p>Цена в Украине: @{
+
+            float end = 0; //таможня
+            int bs = 0; //переменная для просчета таможни
+            float exp = 15;//Доверенность на Экспедитора
+            float combank; //комиссия банка
+            float costarrive = 1500; //стоимость доставки
+            float cost = Model.price; //цена авто в США
+            var eng = Model.engineVolume; //объем двигателя
+            var yearr = Model.year; //Год
+            float port = 50; //Разгрузка в порту
+            float broker = 900; //Таможенный брокер
+            float stayport = 40; //Стояка в порту
+            float serf = 265; //Сертификация
+            float ourmoney; //Наша Комиссия
+            float autoinuckrain; //Цена растаможенного авто в Украине
+            float auc1; // 1 таблица на копарте
+            float auc2; // 2 таблица на копарте
+            float auc; //Аукционный сбор результативный
+            float AKS = 0; //Аукционный сбор
+            float POSHL = 0; //Пошлина
+            float NDS = 0; //НДС
+            float PENS = 0; //Пенсионный сбор
+            //Просчет нашей комиссии.
+            if (cost < 10000)
+            {
+                ourmoney = 750;
+            }
+            else
+            {
+                ourmoney = 1000;
+            }
+
+            //Аукционный сбор  1 таблица
+
+            if (cost < 100)
+            {
+                auc1 = 1;
+            }
+            else if (cost >= 100 && cost < 200)
+            {
+                auc1 = 25;
+            }
+            else if (cost >= 200 && cost < 300)
+            {
+                auc1 = 50;
+            }
+            else if (cost >= 300 && cost < 400)
+            {
+                auc1 = 75;
+            }
+            else if (cost >= 400 && cost < 500)
+            {
+                auc1 = 110;
+            }
+            else if (cost >= 500 && cost < 550)
+            {
+                auc1 = 125;
+            }
+            else if (cost >= 550 && cost < 600)
+            {
+                auc1 = 130;
+            }
+            else if (cost >= 600 && cost < 700)
+            {
+                auc1 = 140;
+            }
+            else if (cost >= 700 && cost < 800)
+            {
+                auc1 = 155;
+            }
+            else if (cost >= 800 && cost < 900)
+            {
+                auc1 = 170;
+            }
+            else if (cost >= 900 && cost < 1000)
+            {
+                auc1 = 185;
+            }
+            else if(cost >= 1000 && cost < 1200)
+            {
+                auc1 = 200;
+            }
+            else if (cost >= 1200 && cost < 1300)
+            {
+                auc1 = 225;
+            }
+            else if (cost >= 1300 && cost < 1400)
+            {
+                auc1 = 240;
+            }
+            else if (cost >= 1400 && cost < 1500)
+            {
+                auc1 = 250;
+            }
+            else if (cost >= 1500 && cost < 1600)
+            {
+                auc1 = 260;
+            }
+            else if (cost >= 1600 && cost < 1700)
+            {
+                auc1 = 275;
+            }
+            else if (cost >= 1700 && cost < 1800)
+            {
+                auc1 = 285;
+            }
+            else if (cost >= 1800 && cost < 2000)
+            {
+                auc1 = 300;
+            }
+            else if (cost >= 2000 && cost < 2400)
+            {
+                auc1 = 325;
+            }
+            else if (cost >= 2400 && cost < 2500)
+            {
+                auc1 = 335;
+            }
+            else if (cost >= 2500 && cost < 3000)
+            {
+                auc1 = 350;
+            }
+            else if (cost >= 3000 && cost < 3500)
+            {
+                auc1 = 400;
+            }
+            else if (cost >= 3500 && cost < 4000)
+            {
+                auc1 = 450;
+            }
+            else if (cost >= 4000 && cost < 4500)
+            {
+                auc1 = 475;
+            }
+            else if (cost >= 4500 && cost < 5000)
+            {
+                auc1 = 500;
+            }
+            else if (cost >= 5000 && cost < 6000)
+            {
+                auc1 = 525;
+            }
+            else if (cost >= 6000 && cost < 7500)
+            {
+                auc1 = 550;
+            }
+            else if (cost >= 7500 && cost < 10000)
+            {
+                auc1 = 575;
+            }
+            else if (cost >= 10000 && cost < 15000)
+            {
+                auc1 = 600;
+            }
+            else
+            {
+                auc1 = cost / 25;
+            }
+            //Аукционный сбор таблица 2
+
+            if (cost < 100)
+            {
+                auc2 = 0;
+            }
+            else if (cost >= 100 && cost < 500)
+            {
+                auc2 = 29;
+            }
+            else if (cost >= 500 && cost < 1000)
+            {
+                auc2 = 39;
+            }
+            else if (cost >= 1000 && cost < 1500)
+            {
+                auc2 = 59;
+            }
+            else if (cost >= 1500 && cost < 2000)
+            {
+                auc2 = 69;
+            }
+            else if (cost >= 2000 && cost < 4000)
+            {
+                auc2 = 79;
+            }
+            else if (cost >= 4000 && cost < 6000)
+            {
+                auc2 = 89;
+            }
+            else if (cost >= 6000 && cost < 8000)
+            {
+                auc2 = 99;
+            }
+            else
+            {
+                auc2 = 119;
+            }
+
+            //ТОЧНАЯ ЦЕНА АВТО ДЛЯ ТАМОЖНИ
+
+            auc = auc1 + auc2 + 59; //Комиссия аукциона
+            //cost += auc;
+            //cost += 400;
+
+            //Чекбоксы бензин дизель или электро
+            int check = 0;
+            if (Model.categoryID == 2)
+            {
+                check = 1; //бензин
+
+
+            }
+            else if (Model.categoryID == 1003)
+            {
+                check = 2; //дизель
+
+            }
+            else if (Model.categoryID == 1002)
+            {
+                check = 3; //гибрид
+
+            }
+            else if (Model.categoryID == 1)
+            {
+                check = 4; //електро
+
+            }
+
+            //В зависимости от топлива какая цена при умножении для аксциза
+
+
+
+            if (check != 4)
+            {
+                if (check == 1)
+                {
+                    if (eng <= 3)
+                    {
+                        bs = 55;
+                    }
+                    else if (eng > 3)
+                    {
+                        bs = 110;
+                    }
+
+                }
+                else if (check == 2)
+                {
+                    if (eng <= 7 / 2)
+                    {
+                        bs = 83;
+                    }
+                    else if (eng > 7 / 2)
+                    {
+                        bs = 165;
+                    }
+                }
+                else if (check == 3)
+                {
+                    if (eng <= 3)
+                    {
+                        bs = 55;
+                    }
+                    else if (eng > 3)
+                    {
+                        bs = 110;
+                    }
+
+                }
+
+                //Просчеты
+
+
+
+                AKS = bs * yearr * eng; //Акциз
+                POSHL = cost / 10; //Пошлина
+                NDS = (cost + POSHL + AKS) / 5; //НДС
+                if (cost < 12000) // Пенсионный фонд
+                {
+                    PENS = (cost * 3) / 100;
+                }
+
+                else if (cost >= 12000 && cost < 20000)
+
+                {
+                    PENS = (cost * 4) / 100;
+                }
+                else
+
+                {
+                    PENS = (cost * 5) / 100;
+                }
+
+                end = NDS + POSHL + AKS + PENS; //Чисто за таможню
+            }
+            else if (check == 4)
+            {
+
+
+                AKS = (eng / 10) + eng;
+                POSHL = 0;
+                NDS = 0;
+                if (cost < 12000) // Пенсионный фонд
+                {
+                    PENS = (cost * 3) / 100;
+                }
+                else if (cost >= 12000 && cost < 20000)
+                {
+                    PENS = (cost * 4) / 100;
+                }
+                else
+                {
+                    PENS = (cost * 5) / 100;
+                }
+                // Пенсионный фонд
+                end = NDS + POSHL + AKS + PENS; //Чисто за таможню
+            }
+
+            // auc = auc1 + auc2 + 59; //Комиссия аукциона
+            // cost += auc; //добавление к цене аукционного сбор
+            //cost += 400; //добавление 400 $ каких-то
+
+            double end2 =  Math.Round(end, 0); //Округление 
+            combank = (cost)/250 + 12; //Комиссия банка за перевод денег
+            float cost2 = cost;
+
+            autoinuckrain = combank + costarrive + exp + port + broker + ourmoney + end + cost2 + stayport; //Округление цены авто в Украине
+            double autoinuckrain2 = Math.Round(autoinuckrain, 0); //Округление цена авто в Украине
+            double endal = autoinuckrain2  + serf;
+
+        } @endal $</p>
+
+        @using (Html.BeginForm("OpenUp", "OpenUp", FormMethod.Get))
+        {
+            <button type="submit" name="carId" value="@Model.id">Подробнее</button>
+        }
+
+    </div>

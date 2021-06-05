@@ -1,0 +1,14 @@
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\bin\Release\netcoreapp2.1\shoooooop.deps.json
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\bin\Release\netcoreapp2.1\shoooooop.runtimeconfig.json
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\bin\Release\netcoreapp2.1\shoooooop.runtimeconfig.dev.json
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\bin\Release\netcoreapp2.1\shoooooop.dll
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\bin\Release\netcoreapp2.1\shoooooop.pdb
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.csprojAssemblyReference.cache
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.csproj.CoreCompileInputs.cache
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.RazorAssemblyInfo.cache
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.RazorAssemblyInfo.cs
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.AssemblyInfoInputs.cache
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.AssemblyInfo.cs
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.RazorTargetAssemblyInfo.cache
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.dll
+C:\Users\Admin.000\source\repos\shoooooop\shoooooop\obj\Release\netcoreapp2.1\shoooooop.pdb
